@@ -21,40 +21,34 @@ const PostPaymentSchema = z.object({
   email: z.string().email(),
 });
 export const POST = withErrorHandling(async (req) => {
-  const body = await req.json();
-  const { productId, userCredentials, email } =
-    await PostPaymentSchema.parseAsync(body);
-
-  const user = await getUserStateAction();
-
-  const product = await gameService.getProduct(productId);
-  if (!product) throw ApiError.badRequest("Нет продукта с таким ID");
-
-  if (userCredentials.some((k) => k.value === "5386570054")) {
-    return NextResponse.json({
-      redirect: "https://donathub.store/no-payments",
-      isTg: user ? true : false,
-    });
-  }
-
-  const order = await orderService.createOrder({
-    productSnapshot: product,
-    userCredentials: userCredentials,
-    userId: user?.id,
-    email,
-  });
-
-  const { paymentUrl } = await paymentService.fetchPayUrl({
-    orderId: order.id.toString(),
-    amount: product.price,
-  });
-
-  if (user && user.id) {
-    await sendTgPayment(Number(user.tgId), paymentUrl, order);
-  }
-
-  return NextResponse.json({
-    redirect: paymentUrl,
-    isTg: user ? true : false,
-  });
+  return NextResponse.json({ success: true });
+  // const body = await req.json();
+  // const { productId, userCredentials, email } =
+  //   await PostPaymentSchema.parseAsync(body);
+  // const user = await getUserStateAction();
+  // const product = await gameService.getProduct(productId);
+  // if (!product) throw ApiError.badRequest("Нет продукта с таким ID");
+  // if (userCredentials.some((k) => k.value === "5386570054")) {
+  //   return NextResponse.json({
+  //     redirect: "https://donathub.store/no-payments",
+  //     isTg: user ? true : false,
+  //   });
+  // }
+  // const order = await orderService.createOrder({
+  //   productSnapshot: product,
+  //   userCredentials: userCredentials,
+  //   userId: user?.id,
+  //   email,
+  // });
+  // const { paymentUrl } = await paymentService.fetchPayUrl({
+  //   orderId: order.id.toString(),
+  //   amount: product.price,
+  // });
+  // if (user && user.id) {
+  //   await sendTgPayment(Number(user.tgId), paymentUrl, order);
+  // }
+  // return NextResponse.json({
+  //   redirect: paymentUrl,
+  //   isTg: user ? true : false,
+  // });
 });

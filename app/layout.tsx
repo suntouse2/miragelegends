@@ -12,9 +12,8 @@ const montserrat = Montserrat({
 });
 
 export const metadata: Metadata = {
-  title: "DonatHUB — Магазин донатов для мобильных и ПК игр",
-  description:
-    "Донаты быстро и выгодно. Мгновенное пополнение, низкие цены и бонусы для геймеров.",
+  title: "MirageLegends — Магазин доната Mobile Legends",
+  description: "Mobile Legends донат алмазы дешево и быстро",
 };
 export const viewport: Viewport = {
   userScalable: false,

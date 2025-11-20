@@ -54,7 +54,7 @@ export default function Footer() {
               Пользовательское соглашение
             </Link>
           </div>
-          <span>© 2025 DONATHUB. Все права защищены.</span>
+          <span>© 2025 MirageLegends. Все права защищены.</span>
         </div>
       </div>
     </footer>
