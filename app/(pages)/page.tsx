@@ -2,8 +2,6 @@ import Container from "@/app/ui/Container";
 import { gameService } from "@/services/gameService";
 import { notFound } from "next/navigation";
 import GameClient from "@/app/components/GameClient";
-import Image from "next/image";
-import Slider from "../components/Slider";
 import Faq from "../components/Faq";
 
 export const revalidate = false;
@@ -18,7 +16,6 @@ export default async function Page() {
 
   return (
     <Container>
-      <Slider />
       <GameClient
         game={game}
         categories={categories}

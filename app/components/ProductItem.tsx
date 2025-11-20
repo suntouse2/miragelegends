@@ -42,7 +42,7 @@ export default function ProductItem({
       </span>
       <h3 className="flex gap-1 mt-1 items-center font-semibold text-[18px]">
         {product.title}{" "}
-        <Image width={40} height={40} alt="UC" src={"/coins/uc.webp"} />
+        <Image width={40} height={40} alt="UC" src={"/coins/diamond.webp"} />
       </h3>
       <div className="flex gap-2 items-center">
         <span className="font-semibold text-[16px] ">{product.price}₽</span>

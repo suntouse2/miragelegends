@@ -17,7 +17,7 @@ export default function Footer() {
               className="mb-3"
             />
             <p className="text-sm text-white/70 leading-relaxed">
-              Лучшие цены на UC PUBG MOBILE. Моментальное зачисление по UID.
+              Лучшие цены на Алмазы Mobile Legends
             </p>
           </div>
 

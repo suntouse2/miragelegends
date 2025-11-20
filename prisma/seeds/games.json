@@ -6,8 +6,14 @@
       "title": "🎮 Mobile Legends",
       "credentials": [
         {
+          "key": "server_id",
+          "label": "Server ID",
+          "regexp": "^[0-9]+$",
+          "placeholder": "5******"
+        }
+              {
           "key": "user_id",
-          "label": "UID Игрока",
+          "label": "Player ID",
           "regexp": "^[0-9]+$",
           "placeholder": "5******"
         }

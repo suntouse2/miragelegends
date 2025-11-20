@@ -30,8 +30,8 @@ export default function Header() {
             <Image
               priority
               src={"/logo.svg"}
-              width={110}
-              height={20}
+              width={160}
+              height={40}
               alt="dhcoin"
             />
           </Link>
@@ -46,7 +46,7 @@ export default function Header() {
             </Button>
           </div>
 
-          <div className="flex items-center gap-1">
+          <div className="md:hidden flex items-center gap-1">
             <div className="flex md:hidden">
               <Button className="!border-none" onClick={() => setOpened(true)}>
                 <Menu />
