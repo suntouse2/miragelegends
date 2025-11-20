@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="UTF-8" />
+		<title>3D Platformer Demo</title>
+		<style>
+			body {
+				margin: 0;
+				overflow: hidden;
+			}
+			#overlay {
+				position: fixed;
+				top: 20px;
+				left: 50%;
+				transform: translateX(-50%);
+				color: #fff;
+				font-family: Arial, Helvetica, sans-serif;
+				background: rgba(0, 0, 0, 0.5);
+				padding: 6px 12px;
+				border-radius: 6px;
+			}
+		</style>
+	</head>
+	<body>
+		<canvas id="game"></canvas>
+		<div id="overlay">WASD/←↑→↓ — двигаться, SPACE — прыжок</div>
+		<script src="https://unpkg.com/three@0.165.0/build/three.min.js"></script>
+		<script>
+			const canvas = document.getElementById('game')
+			const renderer = new THREE.WebGLRenderer({ canvas, antialias: true })
+			renderer.setSize(innerWidth, innerHeight)
+			const scene = new THREE.Scene()
+			scene.background = new THREE.Color('#20232a')
+
+			const camera = new THREE.PerspectiveCamera(60, innerWidth / innerHeight, 0.1, 1000)
+			camera.position.set(0, 5, 10)
+
+			const light = new THREE.HemisphereLight(0xffffff, 0x444444, 1.2)
+			scene.add(light)
+
+			const playerGeom = new THREE.BoxGeometry(1, 1.6, 1)
+			const playerMat = new THREE.MeshStandardMaterial({ color: 0x2194ce })
+			const player = new THREE.Mesh(playerGeom, playerMat)
+			player.position.y = 3
+			scene.add(player)
+
+			const platforms = []
+			function addPlatform(x, y, z, w, d, h, color = 0x808080) {
+				const g = new THREE.BoxGeometry(w, h, d)
+				const m = new THREE.MeshStandardMaterial({ color })
+				const mesh = new THREE.Mesh(g, m)
+				mesh.position.set(x, y, z)
+				scene.add(mesh)
+				platforms.push({ mesh, w, d, h })
+			}
+			addPlatform(0, -0.5, 0, 40, 40, 1) // ground
+			addPlatform(5, 2, 0, 6, 6, 1)
+			addPlatform(15, 4, 0, 6, 6, 1)
+			addPlatform(25, 6, 0, 6, 6, 1)
+			addPlatform(35, 8, 0, 6, 6, 1, 0x00ff00) // goal
+
+			// Physics
+			const GRAVITY = -20
+			let velocityY = 0
+			let onGround = false
+
+			const keys = {}
+			addEventListener('keydown', e => (keys[e.code] = true))
+			addEventListener('keyup', e => (keys[e.code] = false))
+
+			function rectIntersects(a, b) {
+				return (
+					Math.abs(a.x - b.x) < 1 && Math.abs(a.y - b.y) < 1 && Math.abs(a.z - b.z) < 1
+				)
+			}
+
+			function animate() {
+				requestAnimationFrame(animate)
+				const dt = 0.016 // approx
+				// Horizontal movement
+				const speed = 6
+				if (keys['KeyA'] || keys['ArrowLeft']) player.position.x -= speed * dt
+				if (keys['KeyD'] || keys['ArrowRight']) player.position.x += speed * dt
+				if (keys['KeyW'] || keys['ArrowUp']) player.position.z -= speed * dt
+				if (keys['KeyS'] || keys['ArrowDown']) player.position.z += speed * dt
+				// Jump
+				if (keys['Space'] && onGround) {
+					velocityY = 10
+					onGround = false
+				}
+				// Apply gravity
+				velocityY += GRAVITY * dt
+				player.position.y += velocityY * dt
+				// Collision check with platforms
+				onGround = false
+				platforms.forEach(p => {
+					const mesh = p.mesh
+					if (
+						player.position.y >= mesh.position.y &&
+						Math.abs(player.position.x - mesh.position.x) < p.w / 2 + 0.5 &&
+						Math.abs(player.position.z - mesh.position.z) < p.d / 2 + 0.5
+					) {
+						if (player.position.y - velocityY * dt <= mesh.position.y + p.h / 2) {
+							player.position.y = mesh.position.y + p.h / 2 + 0.8
+							velocityY = 0
+							onGround = true
+						}
+					}
+				})
+				// fall reset
+				if (player.position.y < -10) {
+					player.position.set(0, 3, 0)
+					velocityY = 0
+				}
+				// camera follow
+				camera.position.lerp(
+					new THREE.Vector3(
+						player.position.x,
+						player.position.y + 5,
+						player.position.z + 10
+					),
+					0.1
+				)
+				camera.lookAt(player.position)
+				renderer.render(scene, camera)
+
+				// Goal
+				const goal = platforms[platforms.length - 1].mesh.position
+				if (rectIntersects(player.position, goal)) {
+					document.getElementById('overlay').innerText = 'Уровень пройден! 🎉'
+				}
+			}
+			animate()
+
+			addEventListener('resize', () => {
+				camera.aspect = innerWidth / innerHeight
+				camera.updateProjectionMatrix()
+				renderer.setSize(innerWidth, innerHeight)
+			})
+		</script>
+	</body>
+</html>

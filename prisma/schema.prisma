@@ -1,0 +1,115 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id           Int           @id @default(autoincrement())
+  first_name   String?
+  last_name    String?
+  photo_url    String?
+  tgId         String        @unique
+  xp           Int           @default(150)
+  level        Int           @default(1)
+  referredById Int?
+  referredBy   User?         @relation("Referrals", fields: [referredById], references: [id])
+  referrals    User[]        @relation("Referrals")
+  createdAt    DateTime      @default(now())
+
+  orders       Order[]
+
+  @@map("users")
+}
+
+
+
+model Game {
+  id          String            @id @default(cuid())
+  slug        String            @unique
+  title       String
+  description String?
+  imageSrc    String?
+  credentials GameCredentials[]
+  categories  ProductCategory[]
+  createdAt   DateTime          @default(now())
+  updatedAt   DateTime          @updatedAt
+  express     Boolean           @default(true)
+  popular     Boolean           @default(true)
+  sort        Int               @default(0)
+
+  @@map("games")
+}
+
+model GameCredentials {
+  id          Int    @id @unique @default(autoincrement())
+  key         String
+  label       String
+  regexp      String
+  placeholder String
+  game        Game   @relation(fields: [gameId], references: [id])
+  gameId      String
+}
+
+model ProductCategory {
+  id        String    @id @default(cuid())
+  slug      String
+  title     String
+  info      String?
+  game      Game      @relation(fields: [gameId], references: [id])
+  gameId    String
+  coinSrc   String    @default("")
+  products  Product[]
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+
+  @@unique([slug, gameId])
+  @@map("productsCategory")
+}
+
+model Product {
+  id          String  @id @default(cuid())
+  title       String
+  price       Int
+  description String?
+  imageSrc    String?
+
+  category   ProductCategory @relation(fields: [categoryId], references: [id])
+  categoryId String
+  data       Json
+  createdAt  DateTime        @default(now())
+  updatedAt  DateTime        @updatedAt
+
+  @@map("products")
+}
+
+enum OrderStatus {
+  CREATED
+  PAID
+  PROCESS
+  DONE
+}
+
+enum OrderMethod {
+  SBP
+  CARD
+}
+
+model Order {
+  id              Int         @id @default(autoincrement())
+  status          OrderStatus @default(CREATED)
+  productSnapshot Json
+  createdAt       DateTime    @default(now())
+  updatedAt       DateTime    @updatedAt
+  userCredentials Json
+  user            User?        @relation(fields: [userId], references: [id])
+  userId          Int?
+  email String @default("")
+  mailId String @default("")
+  @@map("orders")
+}
+
+

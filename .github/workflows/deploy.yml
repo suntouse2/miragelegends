@@ -1,0 +1,28 @@
+name: Deploy MIRAGELEGENDS
+
+on:
+  push:
+    branches: [master]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup SSH
+        uses: webfactory/ssh-agent@v0.8.0
+        with:
+          ssh-private-key: ${{ secrets.MIRAGE_KEY }}
+
+      - name: Deploy to Server
+        run: |
+          ssh -o StrictHostKeyChecking=no root@178.72.138.188 << 'EOF'
+          cd /home/miragelegends
+          git pull origin master
+          npm install
+          npm run build
+          pm2 restart miragelegends || pm2 start npm --name miragelegends -- run start
+          EOF

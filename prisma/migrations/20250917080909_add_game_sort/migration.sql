@@ -1,0 +1,2 @@
+-- AlterTable
+ALTER TABLE "games" ADD COLUMN     "sort" INTEGER NOT NULL DEFAULT 0;

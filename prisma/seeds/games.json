@@ -1,0 +1,137 @@
+{
+  "$schema": "./games.schema.json",
+  "games": [
+    {
+      "slug": "pubg-mobile",
+      "title": "🎮 PUBG Mobile",
+      "credentials": [
+        {
+          "key": "user_id",
+          "label": "UID Игрока",
+          "regexp": "^[0-9]+$",
+          "placeholder": "5******"
+        }
+      ],
+      "imageSrc": "/games/pubg-mobile.webp",
+      "description": "Порази своих тимейтов крутыми скинами, или прокати на своей новой Машине, благодаря официальной покупке Юси и доната в Пабг Мобайл!",
+      "express": true,
+      "popular": true,
+      "categories": [
+        {
+          "slug": "uc",
+          "title": "📦 Донат в PUBG Mobile",
+          "coinSrc": "/coins/uc.webp",
+          "info": "",
+          "products": [
+            {
+              "title": "60",
+              "price": 75,
+              "imageSrc": "/products/pubg-mobile/1.webp",
+              "description": "Активация: игровой ID",
+              "data": {
+                "title": "60 UC",
+                "product_id": 4085924,
+                "user_field": "Character ID",
+                "category": 1,
+                "quantity": 1
+              }
+            },
+            {
+              "title": "1800",
+              "price": 880,
+              "imageSrc": "/products/pubg-mobile/2.webp",
+              "description": "Активация: игровой ID",
+              "data": {
+                "title": "60 UC",
+                "product_id": 4085924,
+                "user_field": "Character ID",
+                "category": 1,
+                "quantity": 1
+              }
+            },
+            {
+              "title": "2100",
+              "price": 990,
+              "imageSrc": "/products/pubg-mobile/3.webp",
+              "description": "Активация: игровой ID",
+              "data": {
+                "title": "60 UC",
+                "product_id": 4085924,
+                "user_field": "Character ID",
+                "category": 1,
+                "quantity": 1
+              }
+            },
+            {
+              "title": "3750",
+              "price": 1380,
+              "imageSrc": "/products/pubg-mobile/4.webp",
+              "description": "Активация: игровой ID",
+              "data": {
+                "title": "60 UC",
+                "product_id": 4085924,
+                "user_field": "Character ID",
+                "category": 1,
+                "quantity": 1
+              }
+            },
+            {
+              "title": "6000",
+              "price": 1899,
+              "imageSrc": "/products/pubg-mobile/5.webp",
+              "description": "Активация: игровой ID",
+              "data": {
+                "title": "60 UC",
+                "product_id": 4085924,
+                "user_field": "Character ID",
+                "category": 1,
+                "quantity": 1
+              }
+            },
+            {
+              "title": "11950",
+              "price": 2980,
+              "imageSrc": "/products/pubg-mobile/6.webp",
+              "description": "Активация: игровой ID",
+              "data": {
+                "title": "325 UC",
+                "product_id": 4085925,
+
+                "user_field": "Character ID",
+                "category": 1,
+                "quantity": 1
+              }
+            },
+            {
+              "title": "13500",
+              "price": 3205,
+              "imageSrc": "/products/pubg-mobile/7.webp",
+              "description": "Активация: игровой ID",
+              "data": {
+                "title": "325 UC",
+                "product_id": 4085925,
+                "user_field": "Character ID",
+                "category": 1,
+                "quantity": 1
+              }
+            },
+            {
+              "title": "32400",
+              "price": 6199,
+              "imageSrc": "/products/pubg-mobile/8.webp",
+              "description": "Активация: игровой ID",
+              "data": {
+                "title": "660 UC",
+                "product_id": 4085927,
+
+                "user_field": "Character ID",
+                "category": 1,
+                "quantity": 1
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

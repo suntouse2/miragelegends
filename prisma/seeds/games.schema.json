@@ -1,0 +1,64 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Game",
+  "type": "object",
+  "properties": {
+    "slug": { "type": "string" },
+    "title": { "type": "string" },
+    "imageSrc": { "type": "string" },
+    "description": { "type": "string" },
+    "express": { "type": "boolean" },
+    "popular": { "type": "boolean" },
+    "credentials": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "key": { "type": "string" },
+          "label": { "type": "string" },
+          "regexp": { "type": "string" },
+          "placeholder": { "type": "string" }
+        },
+        "required": ["key", "label", "regexp", "placeholder"]
+      }
+    },
+    "categories": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "slug": { "type": "string" },
+          "title": { "type": "string" },
+          "info": { "type": "string" },
+          "coinSrc": { "type": "string" },
+          "products": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "title": { "type": "string" },
+                "price": { "type": "number" },
+                "imageSrc": { "type": "string" },
+                "description": { "type": "string" },
+                "data": {
+                  "type": "object",
+                  "properties": {
+                    "type": { "type": "string", "enum": ["top-up", "item"] },
+                    "amount": { "type": "number" },
+                    "bonus": { "type": "number" },
+                    "oldPrice": { "type": "number" },
+                    "title": { "type": "string" }
+                  },
+                  "required": ["type", "amount"]
+                }
+              },
+              "required": ["title", "price", "imageSrc", "data"]
+            }
+          }
+        },
+        "required": ["slug", "title", "products"]
+      }
+    }
+  },
+  "required": ["slug", "title", "credentials", "categories"]
+}
