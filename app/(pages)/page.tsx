@@ -3,6 +3,7 @@ import { gameService } from "@/services/gameService";
 import { notFound } from "next/navigation";
 import GameClient from "@/app/components/GameClient";
 import Faq from "../components/Faq";
+import Slider from "../components/Slider";
 
 export const revalidate = false;
 
@@ -16,6 +17,7 @@ export default async function Page() {
 
   return (
     <Container>
+      <Slider />
       <GameClient
         game={game}
         categories={categories}
