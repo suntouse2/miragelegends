@@ -1,26 +1,26 @@
-import { getUserStateAction } from "@/app/actions/getUserStateAction";
-import { ApiError } from "@/app/error/ApiError";
+// import { getUserStateAction } from "@/app/actions/getUserStateAction";
+// import { ApiError } from "@/app/error/ApiError";
 import { withErrorHandling } from "@/lib/mapError";
-import { sendTgPayment } from "@/lib/sendTgPayment";
-import { gameService } from "@/services/gameService";
-import { orderService } from "@/services/orderService";
-import { paymentService } from "@/services/paymentService";
+// import { sendTgPayment } from "@/lib/sendTgPayment";
+// import { gameService } from "@/services/gameService";
+// import { orderService } from "@/services/orderService";
+// import { paymentService } from "@/services/paymentService";
 import { NextResponse } from "next/server";
-import z from "zod";
+// import z from "zod";
 
-const PostPaymentSchema = z.object({
-  productId: z.string(),
-  paymentMethod: z.string(),
-  userCredentials: z.array(
-    z.object({
-      key: z.string(),
-      label: z.string(),
-      value: z.union([z.string(), z.number()]),
-    })
-  ),
-  email: z.string().email(),
-});
-export const POST = withErrorHandling(async (req) => {
+// const PostPaymentSchema = z.object({
+//   productId: z.string(),
+//   paymentMethod: z.string(),
+//   userCredentials: z.array(
+//     z.object({
+//       key: z.string(),
+//       label: z.string(),
+//       value: z.union([z.string(), z.number()]),
+//     })
+//   ),
+//   email: z.string().email(),
+// });
+export const POST = withErrorHandling(async () => {
   return NextResponse.json({ success: true });
   // const body = await req.json();
   // const { productId, userCredentials, email } =
