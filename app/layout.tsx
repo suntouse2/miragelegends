@@ -1,8 +1,8 @@
 import type { Metadata, Viewport } from "next";
-import { Montserrat, Unbounded } from "next/font/google";
+import { Montserrat } from "next/font/google";
 import "./globals.css";
 import ToasterWrapper from "./ui/ToasterWrapper";
-import { TgAuthProvider } from "./components/TgAuthProvider";
+import Snow from "./components/Snow";
 
 const montserrat = Montserrat({
   subsets: ["latin", "cyrillic"],
@@ -29,11 +29,11 @@ export default function RootLayout({
   return (
     <html lang="ru" className={`${montserrat.variable}`}>
       <body className="antialiased">
-        <ToasterWrapper />
-        <TgAuthProvider>
+        <Snow>
+          <ToasterWrapper />
           {children}
           <div id="portal-root"></div>
-        </TgAuthProvider>
+        </Snow>
       </body>
     </html>
   );

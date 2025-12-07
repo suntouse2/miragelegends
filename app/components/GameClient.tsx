@@ -6,13 +6,11 @@ import {
   Product,
   ProductCategory,
 } from "@prisma/client";
-import { useCallback, useState } from "react";
-import BackButton from "./BackButton";
-import { redirect, useRouter } from "next/navigation";
+import { useState } from "react";
 import ProductItem from "./ProductItem";
 import Tooltip from "../ui/Tooltip";
 import Receipt from "./Receipt";
-import MiniReceipt from "./MiniReceipt";
+import { useRouter } from "next/navigation";
 
 type Props = {
   game: Game;
@@ -29,30 +27,20 @@ export default function GameClient({
 }: Props) {
   const router = useRouter();
 
-  const [activeProduct, setActiveProduct] = useState<Product | null>(null);
+  const [activeProduct] = useState<Product | null>(null);
   const activeCategory =
     categories.find((c) => c.id == activeProduct?.categoryId) ?? null;
 
-  const clearActiveProduct = () => setActiveProduct(null);
-
   const [receiptState, setReceiptState] = useState<boolean>(false);
-  const showReceipt = () => setReceiptState(true);
+
   const hideReceipt = () => setReceiptState(false);
 
   const receipt = (p: Product) => {
-    redirect(`/receipt?productId=${p.id}`);
+    router.push(`/receipt?productId=${p.id}`);
   };
-
-  const backAction = useCallback(() => {
-    if (receiptState) return hideReceipt();
-    if (activeProduct) return clearActiveProduct();
-
-    router.back();
-  }, [activeProduct, router, receiptState]);
 
   return (
     <section className="tablet:flex pb-20 gap-8">
-      <BackButton onClick={backAction} />
       <div>
         {categories.map((c) => (
           <div key={c.id}>

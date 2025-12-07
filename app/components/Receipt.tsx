@@ -11,9 +11,8 @@ import { useState } from "react";
 import Input from "../ui/Input";
 import Button from "../ui/Button";
 import toast from "react-hot-toast";
-import axios from "axios";
+import axios, { AxiosError } from "axios";
 import { Loader2, ReceiptText } from "lucide-react";
-import { useWebApp } from "../hooks/useWebApp";
 import Link from "next/link";
 import Checkbox from "../ui/Checkbox";
 
@@ -32,10 +31,6 @@ export default function Receipt({
   category,
   product,
 }: Props) {
-  if (product === null || category === null) return null;
-
-  const webApp = useWebApp();
-
   const credentialsWithValue = [
     ...credentials.map((c) => ({ ...c, value: "" })),
   ];
@@ -55,6 +50,8 @@ export default function Receipt({
 
   const [loading, setLoading] = useState<boolean>(false);
 
+  if (product === null || category === null) return null;
+
   const pay = async () => {
     try {
       setLoading(true);
@@ -67,14 +64,13 @@ export default function Receipt({
           email: emailCredential,
         }
       );
-      if (data.isTg) {
-        webApp?.close();
-      } else {
-        window.location.href = data.redirect;
+
+      window.location.href = data.redirect;
+    } catch (err: unknown) {
+      if (err instanceof AxiosError) {
+        const message = err.response?.data?.message || "Неизвестная ошибка";
+        toast.error(message);
       }
-    } catch (err: any) {
-      const message = err.response?.data?.message || "Неизвестная ошибка";
-      toast.error(message);
     } finally {
       setLoading(false);
     }
@@ -170,7 +166,7 @@ export default function Receipt({
         <Checkbox checked={checked} onChange={() => setChecked(!checked)} />
         <p className="!font-montserrat font-semibold">
           Я согласен с условиями{" "}
-          <Link className="!text-accent-100" href="/user-agreement">
+          <Link className="!text-yellow-300" href="/user-agreement">
             пользовательским соглашением
           </Link>
         </p>
@@ -178,7 +174,7 @@ export default function Receipt({
       <Button
         onClick={pay}
         disabled={loading || !checked}
-        className={"w-full h-[50px] !bg-emerald-400 text-black"}
+        className={"w-full h-[50px]  bg-yellow-300! text-black"}
       >
         {loading ? (
           <Loader2 className="animate-spin" size={20} />

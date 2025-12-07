@@ -15,14 +15,15 @@ jobs:
       - name: Setup SSH
         uses: webfactory/ssh-agent@v0.8.0
         with:
-          ssh-private-key: ${{ secrets.MIRAGE_KEY }}
+          ssh-private-key: ${{ secrets.DEPLOY_KEY }}
 
       - name: Deploy to Server
         run: |
-          ssh -o StrictHostKeyChecking=no root@178.72.138.188 << 'EOF'
-          cd /home/miragelegends
+          ssh -o StrictHostKeyChecking=no miragelegends2@178.72.138.188 << 'EOF'
+          cd /home/app
           git pull origin master
-          npm install
+          rm -rf node_modules
+          npm ci
           npm run build
           pm2 restart miragelegends || pm2 start npm --name miragelegends -- run start
           EOF

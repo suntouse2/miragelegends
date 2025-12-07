@@ -72,7 +72,7 @@ export const POST = withErrorHandling(async (req) => {
 
   const mail = await mailService.sendMail(
     order.email,
-    `DONATHUB | Заказ ${order.id}`,
+    `MirageLegends | Заказ ${order.id}`,
     product.title === "60" ? tovarHTML(order) : orderHTML(order)
   );
 

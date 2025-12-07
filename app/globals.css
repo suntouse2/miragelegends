@@ -283,3 +283,34 @@ textarea {
     0 100%
   );
 }
+.candy-border {
+  border-radius: inherit;
+  border: 2px solid transparent;
+  background: repeating-linear-gradient(
+      45deg,
+      #ff007b 0 10px,
+      #00ccff 10px 20px
+    )
+    border-box;
+  mask: linear-gradient(#000 0 0) padding-box, linear-gradient(#000 0 0);
+  mask-composite: exclude; /* работает в chrome/safari */
+}
+.candy-bg {
+  position: relative;
+  border-radius: 1.5rem; /* чтобы точно совпадало с rounded-3xl */
+  background: repeating-linear-gradient(
+    45deg,
+    #ff007b 0 10px,
+    #ffffff 10px 20px
+  );
+}
+
+/* затемняющий слой */
+.candy-bg::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: rgba(0, 0, 0, 0.25); /* регулировка прозрачности */
+  pointer-events: none;
+}

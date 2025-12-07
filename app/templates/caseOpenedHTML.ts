@@ -159,7 +159,7 @@ export function orderHTML(order: Order) {
                   font-weight: 600;
                 "
               >
-                Заказ №${order.id} на DONATHUB
+                Заказ №${order.id} на MirageLegends
               </td>
             </tr>
 
@@ -187,7 +187,7 @@ export function orderHTML(order: Order) {
                     line-height: 1.45;
                   "
                 >
-                  Спасибо, что выбрали DONATHUB!<br />
+                  Спасибо, что выбрали MirageLegends!<br />
                   Доставка занимает от 15 минут до 12 часов
                 </p>
 
@@ -327,10 +327,10 @@ export function orderHTML(order: Order) {
                 "
               >
                 <a href="https://vk.me/managerpodderzhk">Поддержка</a> |
-                <a href="https://donathub.store/user-agreement"
+                <a href="https://miragelegends.shop/user-agreement"
                   >Пользовательское соглашение</a
                 ><br />
-                DONATHUB © 2024 — 2025
+                MirageLegends © 2024 — 2025
               </td>
             </tr>
           </table>

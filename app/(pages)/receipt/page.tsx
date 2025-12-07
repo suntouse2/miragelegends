@@ -1,4 +1,3 @@
-import BackButton from "@/app/components/BackButton";
 import Receipt from "@/app/components/Receipt";
 import Container from "@/app/ui/Container";
 import { gameService } from "@/services/gameService";
@@ -21,8 +20,7 @@ export default async function ReceiptPage({
   if (!game) return notFound();
 
   return (
-    <Container>
-      <BackButton />
+    <Container className="max-w-xl!">
       <Receipt
         product={product}
         category={product.category}

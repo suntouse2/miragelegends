@@ -7,9 +7,15 @@
       "credentials": [
         {
           "key": "user_id",
-          "label": "UID Игрока",
+          "label": "Player ID",
           "regexp": "^[0-9]+$",
-          "placeholder": "5******"
+          "placeholder": "********"
+        },
+        {
+          "key": "server_id",
+          "label": "Zone ID",
+          "regexp": "^[0-9]+$",
+          "placeholder": "********"
         }
       ],
       "imageSrc": "/games/mobile-legends.webp",

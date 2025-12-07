@@ -73,7 +73,7 @@ export function tovarHTML(order: Order) {
           <table role="presentation" class="main" width="600" cellpadding="0" cellspacing="0">
             <tr>
               <td class="header">
-                Заказ №${order.id} на DONATHUB
+                Заказ №${order.id} на MirageLegends
               </td>
             </tr>
 
@@ -84,7 +84,7 @@ export function tovarHTML(order: Order) {
                 </h1>
 
                 <p class="sub">
-                  Спасибо, что выбрали DONATHUB!<br />
+                  Спасибо, что выбрали MirageLegends!<br />
                   Доставка товара выполняется в течение 15 минут — 12 часов.
                 </p>
 
@@ -133,7 +133,7 @@ export function tovarHTML(order: Order) {
             <tr>
               <td class="footer" style="background: #ffffff;">
                 <a href="https://vk.me/managerpodderzhk">Поддержка</a> |
-                <a href="https://donathub.store/user-agreement">Пользовательское соглашение</a><br />
+                <a href="https://http://miragelegends.shop/user-agreement">Пользовательское соглашение</a><br />
                 DONATHUB © 2024 — 2025
               </td>
             </tr>

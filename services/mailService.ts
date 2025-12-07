@@ -13,7 +13,7 @@ const transporter = nodemailer.createTransport({
 export const mailService = {
   async sendMail(to: string, subject: string, content: string) {
     const mail = await transporter.sendMail({
-      from: '"no-reply" <no-reply@donathub.store>',
+      from: '"no-reply" <no-reply@miragelegends.shop>',
       to,
       subject: subject,
       html: content,
