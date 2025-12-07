@@ -1,9 +1,7 @@
 import prisma from "@/lib/prisma";
 import { OrderStatus, Prisma } from "@prisma/client";
-import { User } from "@telegram-apps/init-data-node";
 
 type CreateOrderType = {
-  userId?: User["id"];
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   productSnapshot: Record<string, any>;
   userCredentials: { key: string; label: string; value: string | number }[];
@@ -11,12 +9,6 @@ type CreateOrderType = {
 };
 
 export const orderService = {
-  async getUserOrders(id: User["id"]) {
-    return prisma.order.findMany({
-      where: { userId: id },
-      orderBy: { createdAt: "desc" },
-    });
-  },
   async createOrder(
     input: CreateOrderType,
     client: Prisma.TransactionClient = prisma
