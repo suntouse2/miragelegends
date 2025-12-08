@@ -1,7 +1,7 @@
 import { Order, Product } from "@prisma/client";
 
 export function tovarHTML(order: Order) {
-  const product = order.productSnapshot as Object as Product;
+  const product = order.productSnapshot as object as Product;
   const data = product.data as { amount: number; title: string };
 
   return `<!DOCTYPE html>
@@ -132,7 +132,7 @@ export function tovarHTML(order: Order) {
 
             <tr>
               <td class="footer" style="background: #ffffff;">
-                <a href="https://vk.me/managerpodderzhk">Поддержка</a> |
+                <a href="https://t.me/managerpodderzhka">Поддержка</a> |
                 <a href="https://http://miragelegends.shop/user-agreement">Пользовательское соглашение</a><br />
                 DONATHUB © 2024 — 2025
               </td>

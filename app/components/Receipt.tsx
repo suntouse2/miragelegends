@@ -166,7 +166,7 @@ export default function Receipt({
         <Checkbox checked={checked} onChange={() => setChecked(!checked)} />
         <p className="!font-montserrat font-semibold">
           Я согласен с условиями{" "}
-          <Link className="!text-yellow-300" href="/user-agreement">
+          <Link className="!text-accent-100" href="/user-agreement">
             пользовательским соглашением
           </Link>
         </p>
@@ -174,7 +174,7 @@ export default function Receipt({
       <Button
         onClick={pay}
         disabled={loading || !checked}
-        className={"w-full h-[50px]  bg-yellow-300! text-black"}
+        className={"w-full h-[50px]  bg-accent-200! text-black"}
       >
         {loading ? (
           <Loader2 className="animate-spin" size={20} />

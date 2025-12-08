@@ -42,7 +42,7 @@ export default function Header() {
             </Button>
             <Button>
               {" "}
-              <a href="https://vk.me/managerpodderzhk">Поддержка</a>
+              <a href="https://t.me/managerpodderzhka">Поддержка</a>
             </Button>
           </div>
 
@@ -94,7 +94,7 @@ export default function Header() {
                 </Button>
                 <Button>
                   {" "}
-                  <Link href={"https://vk.me/managerpodderzhk"}>Поддержка</Link>
+                  <Link href={"https://t.me/managerpodderzhka"}>Поддержка</Link>
                 </Button>
               </nav>
 

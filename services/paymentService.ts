@@ -5,13 +5,13 @@ type PaymentPayload = {
 
 export const paymentService = {
   async fetchPayment({ orderId, amount }: PaymentPayload) {
-    const url = new URL("https://core.donathub.store/gateway");
+    const url = new URL("https://360payments.biz/gateway");
 
     url.search = new URLSearchParams({
-      projectId: "4",
+      projectId: "2",
       amount: String(amount),
       orderId,
-      domain: "donathub.store",
+      domain: "miragelegends.store",
       description: "Оплата доната",
     }).toString();
 

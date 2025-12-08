@@ -19,7 +19,7 @@ jobs:
 
       - name: Deploy to Server
         run: |
-          ssh -o StrictHostKeyChecking=no miragelegends2@178.72.138.188 << 'EOF'
+          ssh -o StrictHostKeyChecking=no miragelegends@178.72.138.188 << 'EOF'
           cd /home/app
           git pull origin master
           rm -rf node_modules

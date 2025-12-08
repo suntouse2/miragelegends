@@ -29,7 +29,7 @@ export default function Footer() {
               FAQ
             </Link>
             <Link
-              href="https://vk.me/managerpodderzhk"
+              href="https://t.me/managerpodderzhka"
               target="_blank"
               rel="noopener noreferrer"
               className="hover:text-white transition-colors"
