@@ -11,7 +11,7 @@ export const paymentService = {
       projectId: "2",
       amount: String(amount),
       orderId,
-      domain: "miragelegends.store",
+      domain: "miragelegends.shop",
       description: "Оплата доната",
     }).toString();
 
