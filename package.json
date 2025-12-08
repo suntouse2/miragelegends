@@ -1,6 +1,6 @@
 {
-  "name": "dropzone",
-  "version": "0.2.1",
+  "name": "miragelegends",
+  "version": "0.2.2",
   "private": true,
   "prisma": {
     "seed": "tsx prisma/seed.ts"
