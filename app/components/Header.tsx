@@ -8,10 +8,11 @@ import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import Button from "../ui/Button";
 import { Menu, X } from "lucide-react";
+import useSupport from "../hooks/useSupport";
 
 export default function Header() {
   const [opened, setOpened] = useState(false);
-
+  const { support } = useSupport();
   return (
     <>
       <motion.header
@@ -42,7 +43,7 @@ export default function Header() {
             </Button>
             <Button>
               {" "}
-              <a href="https://t.me/managerpodderzhka">Поддержка</a>
+              <a href={support ?? ""}>Поддержка</a>
             </Button>
           </div>
 
@@ -94,7 +95,7 @@ export default function Header() {
                 </Button>
                 <Button>
                   {" "}
-                  <Link href={"https://t.me/managerpodderzhka"}>Поддержка</Link>
+                  <Link href={support ?? ""}>Поддержка</Link>
                 </Button>
               </nav>
 

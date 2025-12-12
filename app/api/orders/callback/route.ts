@@ -24,7 +24,7 @@ const B2BOrderSchema = z.object({
   partner_order_id: z.coerce.string(),
 });
 
-let CALLBACK_SECRET = process.env.CALLBACK_SECRET;
+const CALLBACK_SECRET = process.env.CALLBACK_SECRET;
 
 if (!CALLBACK_SECRET) throw Error(".env missing a key CALLBACK_SECRET");
 
@@ -48,7 +48,7 @@ export const POST = withErrorHandling(async (req) => {
   if (order.status === "PAID")
     throw ApiError.badRequest("Order is already payed");
 
-  const product = order.productSnapshot as Object as Product;
+  const product = order.productSnapshot as object as Product;
 
   const credentials = order.userCredentials as { key: string; value: string }[];
 
@@ -56,6 +56,7 @@ export const POST = withErrorHandling(async (req) => {
     credentials.map(({ key, value }) => [key, value])
   );
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const product_data: any = product.data;
 
   const galaxy_payload = B2BOrderSchema.parse({
@@ -73,7 +74,7 @@ export const POST = withErrorHandling(async (req) => {
   const mail = await mailService.sendMail(
     order.email,
     `MirageLegends | Заказ ${order.id}`,
-    product.title === "60" ? tovarHTML(order) : orderHTML(order)
+    product.title === "60" ? await tovarHTML(order) : await orderHTML(order)
   );
 
   await orderService.updateMail(order.id, mail.messageId);

@@ -1,6 +1,8 @@
+import getSupport from "@/services/supportService";
 import { Order, Product } from "@prisma/client";
 
-export function orderHTML(order: Order) {
+export async function orderHTML(order: Order) {
+  const support = await getSupport();
   const product = order.productSnapshot as object as Product;
   const data = product.data as { amount: number; title: string };
 
@@ -326,7 +328,7 @@ export function orderHTML(order: Order) {
                   background: #ffffff;
                 "
               >
-                <a href="https://t.me/managerpodderzhka">Поддержка</a> |
+                <a href="${support}">Поддержка</a> |
                 <a href="https://miragelegends.shop/user-agreement"
                   >Пользовательское соглашение</a
                 ><br />

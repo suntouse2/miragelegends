@@ -1,9 +1,10 @@
-"use client";
-
+import getSupport from "@/services/supportService";
 import Image from "next/image";
 import Link from "next/link";
 
-export default function Footer() {
+export default async function Footer() {
+  const supportUrl = await getSupport();
+
   return (
     <footer className="footer border-t border-white/10 mt-20 py-10 text-white/80">
       <div className="container max-w-6xl mx-auto px-4">
@@ -29,7 +30,7 @@ export default function Footer() {
               FAQ
             </Link>
             <Link
-              href="https://t.me/managerpodderzhka"
+              href={supportUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="hover:text-white transition-colors"
