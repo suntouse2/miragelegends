@@ -7,13 +7,13 @@
       "credentials": [
         {
           "key": "user_id",
-          "label": "Player ID",
+          "label": "User ID",
           "regexp": "^[0-9]+$",
           "placeholder": "********"
         },
         {
           "key": "server_id",
-          "label": "Zone ID",
+          "label": "Server ID",
           "regexp": "^[0-9]+$",
           "placeholder": "********"
         }
@@ -36,8 +36,9 @@
               "description": "Активация: игровой ID и Server ID",
               "data": {
                 "title": "35 Алмазов",
-                "product_id": 4085924,
-                "user_field": "Character ID",
+                "product_id": 29558515,
+                "user_field": "User ID",
+                "server_field": "Server ID",
                 "category": 1,
                 "quantity": 1
               }
@@ -48,9 +49,10 @@
               "imageSrc": "/products/mobile-legends/2.webp",
               "description": "Активация: игровой ID и Server ID",
               "data": {
-                "title": "2195 Алмазов",
-                "product_id": 4085925,
-                "user_field": "Character ID",
+                "title": "35 Алмазов",
+                "product_id": 29558515,
+                "user_field": "User ID",
+                "server_field": "Server ID",
                 "category": 1,
                 "quantity": 1
               }
@@ -61,9 +63,10 @@
               "imageSrc": "/products/mobile-legends/3.webp",
               "description": "Активация: игровой ID и Server ID",
               "data": {
-                "title": "3688 Алмазов",
-                "product_id": 4085926,
-                "user_field": "Character ID",
+                "title": "55 Алмазов",
+                "product_id": 29558516,
+                "user_field": "User ID",
+                "server_field": "Server ID",
                 "category": 1,
                 "quantity": 1
               }
@@ -74,9 +77,10 @@
               "imageSrc": "/products/mobile-legends/4.webp",
               "description": "Активация: игровой ID и Server ID",
               "data": {
-                "title": "5532 Алмаза",
-                "product_id": 4085927,
-                "user_field": "Character ID",
+                "title": "55 Алмазов",
+                "product_id": 29558516,
+                "user_field": "User ID",
+                "server_field": "Server ID",
                 "category": 1,
                 "quantity": 1
               }
@@ -87,9 +91,10 @@
               "imageSrc": "/products/mobile-legends/5.webp",
               "description": "Активация: игровой ID и Server ID",
               "data": {
-                "title": "7700 Алмазов",
-                "product_id": 4085928,
-                "user_field": "Character ID",
+                "title": "165 Алмазов",
+                "product_id": 29558518,
+                "user_field": "User ID",
+                "server_field": "Server ID",
                 "category": 1,
                 "quantity": 1
               }
@@ -100,9 +105,10 @@
               "imageSrc": "/products/mobile-legends/6.webp",
               "description": "Активация: игровой ID и Server ID",
               "data": {
-                "title": "9288 Алмазов",
-                "product_id": 4085929,
-                "user_field": "Character ID",
+                "title": "165 Алмазов",
+                "product_id": 29558518,
+                "user_field": "User ID",
+                "server_field": "Server ID",
                 "category": 1,
                 "quantity": 1
               }
@@ -113,9 +119,10 @@
               "imageSrc": "/products/mobile-legends/7.webp",
               "description": "Активация: игровой ID и Server ID",
               "data": {
-                "title": "14590 Алмазов",
-                "product_id": 4085930,
-                "user_field": "Character ID",
+                "title": "275 Алмазов",
+                "product_id": 29558522,
+                "user_field": "User ID",
+                "server_field": "Server ID",
                 "category": 1,
                 "quantity": 1
               }
@@ -126,9 +133,10 @@
               "imageSrc": "/products/mobile-legends/8.webp",
               "description": "Активация: игровой ID и Server ID",
               "data": {
-                "title": "16870 Алмазов",
-                "product_id": 4085931,
-                "user_field": "Character ID",
+                "title": "565 Алмазов",
+                "product_id": 29558524,
+                "user_field": "User ID",
+                "server_field": "Server ID",
                 "category": 1,
                 "quantity": 1
               }

@@ -4,31 +4,17 @@ type PaymentPayload = {
 };
 
 export const paymentService = {
-  async fetchPayment({ orderId, amount }: PaymentPayload) {
-    const url = new URL("https://360payments.biz/gateway");
-
-    url.search = new URLSearchParams({
-      projectId: "2",
-      amount: String(amount),
-      orderId,
-      domain: "miragelegends.shop",
-      description: "Оплата доната",
-    }).toString();
-
-    return { url: url.toString() };
-  },
-
   async fetchPayUrl({ orderId, amount }: PaymentPayload) {
-    const response = await fetch("https://core.donathub.store/api/pay", {
+    const response = await fetch("https://360payments.biz/api/pay", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        projectId: 4,
-        methodId: 20,
+        projectId: 7,
+        methodId: 23,
         amount,
         description: "Оплата доната",
         orderId,
-        domain: "donathub.store",
+        domain: "miragelegends.shop",
       }),
     });
 

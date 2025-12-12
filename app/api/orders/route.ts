@@ -32,12 +32,12 @@ export const POST = withErrorHandling(async (req) => {
     email,
   });
 
-  const { url } = await paymentService.fetchPayment({
+  const { paymentUrl } = await paymentService.fetchPayUrl({
     orderId: order.id.toString(),
     amount: product.price,
   });
 
   return NextResponse.json({
-    redirect: url,
+    redirect: paymentUrl,
   });
 });

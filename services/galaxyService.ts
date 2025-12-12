@@ -35,6 +35,7 @@ async function getToken(): Promise<string> {
   return data.token;
 }
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 async function request(path: string, payload: any): Promise<any> {
   const token = await getToken();
   const res = await fetch(`${API_BASE}${path}`, {

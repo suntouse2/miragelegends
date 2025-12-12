@@ -1,14 +1,12 @@
 import { ApiError } from "@/app/error/ApiError";
-import { orderHTML } from "@/app/templates/caseOpenedHTML";
-import { tovarHTML } from "@/app/templates/tovarHTML";
 import { withErrorHandling } from "@/lib/mapError";
 import galaxyService from "@/services/galaxyService";
-import { mailService } from "@/services/mailService";
 import { orderService } from "@/services/orderService";
 import { Product } from "@prisma/client";
 import { nanoid } from "nanoid";
 import { NextResponse } from "next/server";
 import z from "zod";
+
 const CallbackSchema = z.object({
   orderId: z.coerce.number(),
 });
@@ -45,8 +43,8 @@ export const POST = withErrorHandling(async (req) => {
   if (!order.userCredentials)
     throw ApiError.badRequest("No user credentials provided");
 
-  if (order.status === "PAID")
-    throw ApiError.badRequest("Order is already payed");
+  if (order.status === "DONE")
+    throw ApiError.badRequest("Order is already done");
 
   const product = order.productSnapshot as object as Product;
 
@@ -67,17 +65,11 @@ export const POST = withErrorHandling(async (req) => {
 
   await orderService.updateStatus(order.id, "PAID");
 
+  console.log(galaxy_payload);
+
   await galaxyService.createOrder(galaxy_payload);
 
   await orderService.updateStatus(order.id, "DONE");
-
-  const mail = await mailService.sendMail(
-    order.email,
-    `MirageLegends | Заказ ${order.id}`,
-    product.title === "60" ? await tovarHTML(order) : await orderHTML(order)
-  );
-
-  await orderService.updateMail(order.id, mail.messageId);
 
   return NextResponse.json({ success: true });
 });
