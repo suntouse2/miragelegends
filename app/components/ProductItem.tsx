@@ -8,28 +8,31 @@ import Button from "../ui/Button";
 type Props = {
   product: Product;
   category: ProductCategory;
-  isActive: boolean;
   onClick: (p: Product) => void;
 };
 
-export default function ProductItem({ product, isActive, onClick }: Props) {
+export default function ProductItem({ product, onClick }: Props) {
   return (
-    <motion.div
-      className="relative"
-      initial={{ opacity: 0, y: 10 }}
-      animate={{ opacity: 1, y: 0 }}
-    >
+    <motion.div className="relative">
       <div
         onClick={() => onClick(product)}
-        className={`
-    group cursor-pointer relative 
-    w-full p-2 aspect-square flex justify-center items-center rounded-3xl 
-  transition-all
-    ${isActive ? "shadow-[0_0_20px_rgba(255,0,0,0.4)]" : ""}
-  `}
+        className={
+          "group cursor-pointer relative  w-full p-2 aspect-square flex justify-center items-center rounded-3xl  transition-all"
+        }
       >
-        <div className="absolute inset-0 rounded-3xl pointer-events-none candy-border"></div>
-
+        <div className="absolute inset-0 rounded-3xl pointer-events-none border text-pink-400"></div>
+        <div className="absolute left-1 -top-[6.5px] z-2">
+          {/* <Image src={"/snow.svg"} alt="snow" width={140} height={140} /> */}
+        </div>
+        <div className="absolute right-[-5px] -bottom-2 z-2">
+          {/* <Image
+            src={"/snow.svg"}
+            alt="snow"
+            className="scale-[0.9]"
+            width={140}
+            height={140}
+          /> */}
+        </div>
         <Image
           priority
           src={product.imageSrc ?? ""}
@@ -39,28 +42,27 @@ export default function ProductItem({ product, isActive, onClick }: Props) {
           alt={product.title}
         />
       </div>
-
-      {/* Лёгкие снежинки в углах */}
-
-      <span className="block mt-2 text-xs text-accent-100">
-        Зачисление по ID
-      </span>
-
-      <h3 className="flex gap-1 mt-1 items-center font-semibold text-[18px]">
+      <h3 className="flex gap-1 mt-3 items-center font-bold text-[18px]">
         {product.title}
         <Image width={40} height={40} alt="UC" src="/coins/diamond.webp" />
+        <span className="hidden md:flex bg-pink-400 text-black px-2 rounded-sm font-bold text-sm">
+          -70%
+        </span>
       </h3>
 
       <div className="flex gap-2 items-center">
-        <span className="font-semibold text-[16px]">{product.price}₽</span>
-        <span className="font-semibold text-white/50 text-[14px] line-through">
-          {(product.price * 1.75).toFixed()}₽
+        <span className="font-bold text-[16px]">{product.price}₽</span>
+
+        <span className="font-bold text-white/50 text-[14px] line-through">
+          {(product.price / 0.3).toFixed()}₽
         </span>
       </div>
-
+      <span className="inline md:hidden bg-pink-200 text-black px-2 rounded-sm font-bold text-sm">
+        Скидка 70%
+      </span>
       <Button
-        className="font-medium z-2 bg-white/10 w-full mt-1 !py-1 transition-all hover:bg-white/20 hover:scale-[1.02]"
         onClick={() => onClick(product)}
+        className="w-full mt-2 bg-pink-300! text-black"
       >
         Купить
       </Button>

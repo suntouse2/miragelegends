@@ -3,12 +3,16 @@
 import Image from "next/image";
 import Link from "next/link";
 
-export default function Slider() {
+type Props = {
+  href: string;
+};
+
+export default function Slider({ href }: Props) {
   return (
     <div className="w-full">
-      <Link href={"/receipt?productId=cmhkodcd40007crx5e070iqva"}>
+      <Link href={href}>
         <Image
-          src={"/pp.png"}
+          src={"/pp2.png"}
           alt={`poster`}
           width={2000}
           height={2000}

@@ -17,7 +17,7 @@ export default async function Page() {
 
   return (
     <Container>
-      <Slider />
+      <Slider href={`/receipt?productId=${products[1].id}`} />
       <GameClient
         game={game}
         categories={categories}
