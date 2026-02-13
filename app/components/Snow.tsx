@@ -1,29 +1,14 @@
 "use client";
 
-import { PropsWithChildren, useEffect, useState } from "react";
+import { PropsWithChildren } from "react";
 import Snowfall from "react-snowfall";
 
 export default function SnowWrapper({ children }: PropsWithChildren) {
-  const [snowflakeImages, setSnowflakeImages] = useState<HTMLImageElement[]>(
-    []
-  );
-
-  useEffect(() => {
-    const snowflake = new Image();
-    snowflake.src = "/heart.svg";
-
-    snowflake.onload = () => {
-      setSnowflakeImages([snowflake]);
-    };
-  }, []);
-
   return (
     <>
       <Snowfall
-        images={snowflakeImages}
         color="white"
-        snowflakeCount={10}
-        radius={[5, 20]}
+        snowflakeCount={30}
         style={{
           position: "fixed",
           inset: 0,

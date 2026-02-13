@@ -20,18 +20,18 @@ export default function ProductItem({ product, onClick }: Props) {
           "group cursor-pointer relative  w-full p-2 aspect-square flex justify-center items-center rounded-3xl  transition-all"
         }
       >
-        <div className="absolute inset-0 rounded-3xl pointer-events-none border text-pink-400"></div>
+        <div className="absolute inset-0 rounded-3xl pointer-events-none border text-accent-400"></div>
         <div className="absolute left-1 -top-[6.5px] z-2">
-          {/* <Image src={"/snow.svg"} alt="snow" width={140} height={140} /> */}
+          <Image src={"/snow.svg"} alt="snow" width={140} height={140} />
         </div>
         <div className="absolute right-[-5px] -bottom-2 z-2">
-          {/* <Image
+          <Image
             src={"/snow.svg"}
             alt="snow"
             className="scale-[0.9]"
             width={140}
             height={140}
-          /> */}
+          />
         </div>
         <Image
           priority
@@ -45,7 +45,7 @@ export default function ProductItem({ product, onClick }: Props) {
       <h3 className="flex gap-1 mt-3 items-center font-bold text-[18px]">
         {product.title}
         <Image width={40} height={40} alt="UC" src="/coins/diamond.webp" />
-        <span className="hidden md:flex bg-pink-400 text-black px-2 rounded-sm font-bold text-sm">
+        <span className="hidden md:flex bg-accent-400 text-black px-2 rounded-sm font-bold text-sm">
           -70%
         </span>
       </h3>
@@ -57,12 +57,12 @@ export default function ProductItem({ product, onClick }: Props) {
           {(product.price / 0.3).toFixed()}₽
         </span>
       </div>
-      <span className="inline md:hidden bg-pink-200 text-black px-2 rounded-sm font-bold text-sm">
+      <span className="inline md:hidden bg-accent-200 text-black px-2 rounded-sm font-bold text-sm">
         Скидка 70%
       </span>
       <Button
         onClick={() => onClick(product)}
-        className="w-full mt-2 bg-pink-300! text-black"
+        className="w-full mt-2 border-white/20"
       >
         Купить
       </Button>
