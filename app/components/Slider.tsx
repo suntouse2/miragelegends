@@ -12,7 +12,7 @@ export default function Slider({ href }: Props) {
     <div className="w-full">
       <Link href={href}>
         <Image
-          src={"/ml.png"}
+          src={"/mll.png"}
           alt={`poster`}
           width={2000}
           height={2000}
