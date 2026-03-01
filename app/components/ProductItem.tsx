@@ -21,7 +21,7 @@ export default function ProductItem({ product, onClick }: Props) {
         }
       >
         <div className="absolute inset-0 rounded-3xl pointer-events-none border text-accent-400"></div>
-        <div className="absolute left-1 -top-[6.5px] z-2">
+        {/* <div className="absolute left-1 -top-[6.5px] z-2">
           <Image src={"/snow.svg"} alt="snow" width={140} height={140} />
         </div>
         <div className="absolute right-[-5px] -bottom-2 z-2">
@@ -32,7 +32,7 @@ export default function ProductItem({ product, onClick }: Props) {
             width={140}
             height={140}
           />
-        </div>
+        </div> */}
         <Image
           priority
           src={product.imageSrc ?? ""}

@@ -2,7 +2,6 @@ import type { Metadata, Viewport } from "next";
 import { Montserrat } from "next/font/google";
 import "./globals.css";
 import ToasterWrapper from "./ui/ToasterWrapper";
-import Snow from "./components/Snow";
 
 const montserrat = Montserrat({
   subsets: ["latin", "cyrillic"],
@@ -29,11 +28,11 @@ export default function RootLayout({
   return (
     <html lang="ru" className={`${montserrat.variable}`}>
       <body className="antialiased">
-        <Snow>
-          <ToasterWrapper />
-          {children}
-          <div id="portal-root"></div>
-        </Snow>
+        {/* <Snow> */}
+        <ToasterWrapper />
+        {children}
+        <div id="portal-root"></div>
+        {/* </Snow> */}
       </body>
     </html>
   );
